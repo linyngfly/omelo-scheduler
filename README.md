@@ -12,43 +12,43 @@ Simple job will receive a object as a trigger, which take three attributes, a JS
 ###Simple trigge example
 ``` javascript
 //Fire 10000ms after now, and run 10 times with a 1000ms interval.
-var trigger1 = {
+let trigger1 = {
   start : Date.now() + 10000, //Start time, use the time in date object
   period : 1000,      //Fire interval, the precision is millisecond
   count : 10          //Fire times, in this case the trigger will fire 10 times.   
 }
 
 //Fire right now, and run 10 times with 1000ms interval.
-var trigger2 = {
+let trigger2 = {
   period : 1000,
   count : 10
 }
 
 //Fire right now, and run for ever with 1000ms interval.
-var trigger3 = {
+let trigger3 = {
   period : 1000
 }
 
 //Fire 3000ms after right now, run only once.
-var trigger4 = {
+let trigger4 = {
   start : Date.now() + 3000;
 }
 
 //The job will fire right now, run only once.
-var trigger5 = {
+let trigger5 = {
 }
 
 //Illegal! The 'count' attribute cannot used alone without 'period'.  
-var trigger6 = {
+let trigger6 = {
   count : 10;
 }
 ``` 
 
 ###Simple job example
 ``` javascript
-var schedule = require('../lib/schedule');
+let schedule = require('../lib/schedule');
 
-var simpleJob = function(data){
+let simpleJob = function(data){
    console.log("run Job :" + data.name);
 }
 
@@ -59,9 +59,9 @@ Cron job is the job that use cron trigger, it is just like the simple job, only 
 
 ###Cron job example
 ``` javascript
-var schedule = require('../lib/schedule');
+let schedule = require('../lib/schedule');
 
-var cronJob = function(data){
+let cronJob = function(data){
    console.log("run Job :" + data.name);
 }
 
@@ -97,14 +97,14 @@ Pomelo-schedule allow three kinds of spechial characters, they are '-', '/' and 
 
 ##Cancel Job 
 ``` javascript
-var schedule = require('../lib/schedule');
+let schedule = require('../lib/schedule');
 
-var simpleJob = function(){
+let simpleJob = function(){
    console.log("run simple Job ");
 }
 
 //Add a simple job and save the id 
-var id = schedule.scheduleJob({period: 1000}, simpleJob, {});
+let id = schedule.scheduleJob({period: 1000}, simpleJob, {});
 
 /**
  * Do some thing else

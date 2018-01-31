@@ -1,41 +1,41 @@
-var schedule = require('../lib/schedule');
-var cronTrigger = require('../lib/cronTrigger');
-var jobMap = [];
+let schedule = require('../lib/schedule');
+let cronTrigger = require('../lib/cronTrigger');
+let jobMap = [];
 
-var simpleJob = function(data){
-    var t = data.id+data.period;
+let simpleJob = function(data){
+    let t = data.id+data.period;
     console.log("run for simple job :" + data.id + " period: " + data.period + " at time " + (new Date()));
 }
 
-var cronJob = function(data){
+let cronJob = function(data){
    console.log("run for cronJob :" + data.id  + " at time " + (new Date()));
 }
 
 function scheduleSimpleJobTest(count){
-  var id = 0;
-  for(var i = 0; i < count; i ++){
-    var time = Math.ceil(Math.random() * 10 * 1000);
-    var period = Math.ceil(Math.random()*60 * 1000 + 100)
-    var id = schedule.scheduleJob({start:Date.now()+time,period:period}, simpleJob, {id:id++, period:period});
+  let id = 0;
+  for(let i = 0; i < count; i ++){
+    let time = Math.ceil(Math.random() * 10 * 1000);
+    let period = Math.ceil(Math.random()*60 * 1000 + 100)
+    let id = schedule.scheduleJob({start:Date.now()+time,period:period}, simpleJob, {id:id++, period:period});
     jobMap.push(id);
   }
 }
 
 function scheduleCronJobTest(count){
-  var id = 0;
+  let id = 0;
 
-//  var trigger = cronTrigger.decodeTrigger('* * 2-20 * * *');
-  for(var i = 0; i < count; i++){
-  var second = Math.floor(Math.random()*10);
-    var id = schedule.scheduleJob('0/2,2-10,13-20,40-45,55-56 * * * * *', cronJob, {id:id++});
+//  let trigger = cronTrigger.decodeTrigger('* * 2-20 * * *');
+  for(let i = 0; i < count; i++){
+  let second = Math.floor(Math.random()*10);
+    let id = schedule.scheduleJob('0/2,2-10,13-20,40-45,55-56 * * * * *', cronJob, {id:id++});
     jobMap.push(id);
   }
 }
 
 function cancleJob(data){
-  var jobMap = data.jobMap;
+  let jobMap = data.jobMap;
   if(jobMap.length>0){
-    var id = jobMap.pop();
+    let id = jobMap.pop();
     console.log("Cancel job : "  + id + " Last jobs count : " + jobMap.length);
     data.schedule.cancelJob(id);
 }else
@@ -43,7 +43,7 @@ function cancleJob(data){
 }
 
 function scheduleCancleJobTest(){
-  var id = schedule.scheduleJob({start:Date.now(),period:100, count:jobMap.length}, cancleJob, {jobMap:jobMap,schedule:schedule});
+  let id = schedule.scheduleJob({start:Date.now(),period:100, count:jobMap.length}, cancleJob, {jobMap:jobMap,schedule:schedule});
 }
 
 function test(){

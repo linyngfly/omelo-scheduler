@@ -1,14 +1,14 @@
-var cronTrigger = require('../lib/cronTrigger');
+let cronTrigger = require('../lib/cronTrigger');
 
-var SECOND = 0;
-var MIN = 1;
-var HOUR = 2;
-var DOM = 3;
-var MONTH = 4;
-var DOW = 5;
+let SECOND = 0;
+let MIN = 1;
+let HOUR = 2;
+let DOM = 3;
+let MONTH = 4;
+let DOW = 5;
 
 function decoderTest(){
-  var result = [];
+  let result = [];
   
   result.push(cronTrigger.decodeTrigger('12    2 3,4,5 4 5 1'));
   
@@ -19,25 +19,25 @@ function decoderTest(){
 }
 
 function nextTimeTest(count){
-  var timer = cronTrigger.decodeTrigger('0 0 0 1 0 2-5');
+  let timer = cronTrigger.decodeTrigger('0 0 0 1 0 2-5');
   
   
-  var value = Date.now();
+  let value = Date.now();
   console.log(timer);
   
  // console.log([1,2] instanceof Array);
- var r1, r2;
- var start = Date.now();
- for(var i = 0; i < count; i++)
+ let r1, r2;
+ let start = Date.now();
+ for(let i = 0; i < count; i++)
    r1 = cronTrigger.nextTime(value, timer);
- var end = Date.now();
+ let end = Date.now();
  
  console.log("first run time : " + (end-start));
  
- var start = Date.now();
- for(var i = 0; i < count; i++)
+ let start = Date.now();
+ for(let i = 0; i < count; i++)
    r2 = nextExcuteTimeTest(value, timer);
- var end = Date.now();
+ let end = Date.now();
  
  console.log("second run time : " + (end-start));
  
@@ -46,7 +46,7 @@ function nextTimeTest(count){
 }
 
 function nextExcuteTimeTest(time, cronTrigger){
-  var next = new Date(time + 1000);
+  let next = new Date(time + 1000);
   
   while (true)
   {
@@ -101,8 +101,8 @@ function nextExcuteTimeTest(time, cronTrigger){
 }
 
 function getDomLimitTest(y1,y2,m1,m2){
-  for(var year = y1; year <= y2; year++)
-    for(var month = m1; month <= m2; month++){
+  for(let year = y1; year <= y2; year++)
+    for(let month = m1; month <= m2; month++){
       console.log(year + "." + (month +1)+ " limit : " + cronTrigger.getDomLimit(year,month));
     }
 }
@@ -119,7 +119,7 @@ function timeMatch(value, cronTime){
     if(value < cronTime[0] || value > cronTime[cronTime.length -1])
       return false;
     
-    for(var i = 0; i < cronTime.length; i++)
+    for(let i = 0; i < cronTime.length; i++)
       if(value == cronTime[i])
         return true;
        

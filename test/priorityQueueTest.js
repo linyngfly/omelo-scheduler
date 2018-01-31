@@ -1,28 +1,28 @@
-var PriorityQueue = require('../lib/priorityQueue');
-//var Queue = require('./PriorityQueue');
+let PriorityQueue = require('../lib/priorityQueue');
+//let Queue = require('./PriorityQueue');
 //
-//var queue = new Queue();
+//let queue = new Queue();
 
 function testPriorityQueue(num, count){
-  var queue = PriorityQueue.createPriorityQueue();
+  let queue = PriorityQueue.createPriorityQueue();
   
-  for(var k = 0; k < num; k++){
-    var testCase = [];
-    var result = new Array(count);
+  for(let k = 0; k < num; k++){
+    let testCase = [];
+    let result = new Array(count);
     
-    for(var i = 0; i < count; i++){
+    for(let i = 0; i < count; i++){
       testCase[i] = Math.random()*count;
     }
     
-    var start = (new Date()).getTime();
-      for(var i = 0; i < count; i++)
+    let start = (new Date()).getTime();
+      for(let i = 0; i < count; i++)
         queue.offer(testCase[i]);
-    var end = (new Date()).getTime();
+    let end = (new Date()).getTime();
     console.log(end - start);
     
     start = (new Date()).getTime();
-//    var value = queue.pop();
-    for(var i = 0; i < count; i++){
+//    let value = queue.pop();
+    for(let i = 0; i < count; i++){
       result[i] = queue.pop();
 //      next = result[i];
 //      if(value > next){
@@ -40,10 +40,10 @@ function testPriorityQueue(num, count){
     
 //    console.log(result);
     
-    var start = result[0];
+    let start = result[0];
     
-    for(var i = 1; i < count; i++){
-      var next = result[i];
+    for(let i = 1; i < count; i++){
+      let next = result[i];
     
       if(start > next){
         console.log("Error!!!!!!");
@@ -60,10 +60,10 @@ function testPriorityQueue(num, count){
 }
 
 testPriorityQueue(10, 100000);
-//var test = [];
+//let test = [];
 //start = Date.now();
-//var k;
-//for(var i = 0; i < 100000000; i++){
+//let k;
+//for(let i = 0; i < 100000000; i++){
 //  k = i + 34354/i ;
 //}
 //end = Date.now();
