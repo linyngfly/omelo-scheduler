@@ -1,6 +1,6 @@
 {
   "name": "omelo-scheduler",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": false,
   "deprecated": false,
   "description": "omelo-scheduler is a schedule tool for nodejs, it's purpose is to provide a product level schedule module which is high efficient and can support large number job schedule.You can",
